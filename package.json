@@ -1,7 +1,7 @@
 {
   "name": "motherf",
   "version": "0.0.1",
-  "description": "",
+  "description": "Motherf programming language inspired by Brainfuck",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -9,7 +9,7 @@
     "test": "vitest run"
   },
   "keywords": [],
-  "author": "",
+  "author": "Pavel Voronin <pavel.a.voronin@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@vitest/coverage-c8": "^0.27.2",
