@@ -1,0 +1,28 @@
+; Hello, World! with comments, Alpha- and alpha-output and macros
+
+; ;-command ignores everything after till the string end
+; a-command outputs memory[ptr] + 97
+; A-command outputs memory[ptr] + 65
+; macros defined by non-reserved symbol, body and this symbol again
+
+z[-]z     ; macro: memory[ptr] = 0
+V+++++V   ; macro: memory[ptr] += 5
+XVVX      ; macro: call V-macro twice (eq. memory[ptr] += 10)
+
+V++A      ; "H"
+---a      ; "e"
+V++a      ; "l"
+a         ; "l"
++++a      ; "o"
+
+XXX.      ; ","
+
+zXXX++.   ; <SPACE>
+
+zXX++A    ; "W"
+--------a ; "o", look how it is not optimized, we'll to this later
++++a      ; "r"
+------a   ; "l"
+z+++a     ; "d"
+
+XXX.      ; "!"

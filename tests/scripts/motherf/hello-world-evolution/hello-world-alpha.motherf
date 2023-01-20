@@ -1,0 +1,23 @@
+; Hello, World! with comments, Alpha- and alpha-output
+
+; ;-command ignores everything after till the string end
+; a-command outputs memory[ptr] + 97
+; A-command outputs memory[ptr] + 65
+
++++++++A              ; "H"
+---a                  ; "e"
++++++++a              ; "l"
+a                     ; "l"
++++a                  ; "o"
+
+>+++[<++++++++++>-]<. ; ","
+
+------------.         ; <SPACE>
+
+----------A           ; "W"
+--------a             ; "o"
++++a                  ; "r"
+------a               ; "l"
+--------a             ; "d"
+
+>+++[<++++++++++>-]<. ; "!"

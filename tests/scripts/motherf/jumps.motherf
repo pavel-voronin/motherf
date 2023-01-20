@@ -1,0 +1,22 @@
+; Jumps
+
+; #-command reads digit from input (like .-command but minus 48)
+
+; We gonna read 5 symbols from input and output n-th symbol
+
+; Examples:
+;   abcde3 -> c
+;   12qwe4 -> w
+;   !@#$%1 -> !
+
+6++++++6 ; macro: memory[ptr] += 6
+
+>,       ; read first symbol from input to the 2nd cell
+>,
+>,
+>,
+>,       ; read the last, 5th symbol to the 6th cell
+>6\@     ; add 6 to the next cell, reverse direction and jump 6 cells left (not right because of direction)
+#        ; read digit (0-based)
+@        ; jump right because of default direction of the cell
+.        ; classic output

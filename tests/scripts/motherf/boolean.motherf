@@ -1,0 +1,15 @@
+; Limiting cell size
+
+; =-command limits current cell max value by current value
+; ~-command cancels limit of current cell max value
+; 0-command outputs memory[pointer] + 44
+
++   ; cell = 1
+=   ; now max value equals 1
+0   ; "1"
++0  ; "0" as max value is 1
+--0 ; still "0"
+
+; Now this cell has type Boolean as it can be 0 and 1 only
+
+~-  ; cell = 255, limits off

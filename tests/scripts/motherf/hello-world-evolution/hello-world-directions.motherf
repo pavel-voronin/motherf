@@ -1,0 +1,31 @@
+; Hello, World! with comments, Alpha- and alpha-output, macros and changing calculations order
+
+; ;-command ignores everything after till the string end
+; a-command outputs memory[ptr] + 97
+; A-command outputs memory[ptr] + 65
+; macros defined by non-reserved symbol, body and this symbol again
+; /-command sets direct order (by default) for one memory cell
+; \-command sets reverse order so + will decrement and - will increment
+; |-command cycles through direct and reverse orders
+
+z[-]z     ; macro: memory[ptr] = 0
+V+++++V   ; macro: memory[ptr] += 5
+XVVX      ; macro: call V-macro twice (eq. memory[ptr] += 10)
+
+V++A      ; "H"
+---a      ; "e"
+V++a      ; "l"
+a         ; "l"
++++a      ; "o"
+
+XXX.      ; ","
+
+zXXX++.   ; <SPACE>
+
+zXX++A    ; "W"
+|V|---a   ; "o" <-- we reused V-macro with direct toggle command so we decrementing 5 times instead
++++a      ; "r"
+\V/-a     ; "l" <-- specify direction explicitly
+z+++a     ; "d"
+
+XXX.      ; "!"

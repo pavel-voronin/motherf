@@ -1,0 +1,28 @@
+; Macro for Alpha-output re-implementation (w/o A-command)
+
+V+++++V
+XVVX
+LXXXXXL
+
+; Ok, just add 65 to current memory cell and output, right?
+
+QLXV.Q ; we cannot use "A" for macro name, let it be "Q"
+
+; Initially memory cell is 0
+
+Q ; "A"
+
+; The problem is the cell now is 65!
+; So the next call will increment the cell by 65 again
+
+; We definitely have to get rid of side effect
+
+; We cannot redefine macros so let's create new one
+
+W LXV . | LXV | W ; inc 65, output, reverse inc (dec) 65, reverse order again 
+
+>++W ; "C", memory cell contains 2, not 67
+
+; Now it's correct replacement for A-command
+
+A ; "C" again, memory is untouched
