@@ -2,6 +2,8 @@
 
 Motherf is a programming language inspired by Brainfuck. It compiles any BF program and extends its syntax with a variety of 1 character commands.
 
+> Have fun!
+
 ## Usage
 
 ```
@@ -46,6 +48,18 @@ Learning by code is highly recommended.
 ## Examples
 
 Tests are covered with comments. Each command has a usage example and description.
+
+## Roadmap
+
+The language design is still under development. I'm considering doing the following:
+
+- Initialize memory in code by simulating the input:
+  ```
+  :input this string into memory and move pointer:
+  ```
+- Stack, registers
+- Stack-based functions
+- Glue memory tape parts (or portals)
 
 ## Contributing
 
