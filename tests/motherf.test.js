@@ -96,4 +96,12 @@ describe("Motherf", () => {
 
     expect(interpreter.outputBuffer).toBe("100");
   });
+
+  test(`Inline input (::- and :#:-commands)`, () => {
+    const interpreter = load("motherf/inline-input.motherf");
+
+    interpreter.execute();
+
+    expect(interpreter.outputBuffer).toBe("Hello, World!31337");
+  });
 });

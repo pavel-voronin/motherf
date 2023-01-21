@@ -7,6 +7,7 @@ import {
   alphaLog,
   AlphaLog,
   numberInput,
+  inlineInput,
   inc,
   dec,
   left,
@@ -24,14 +25,14 @@ import {
 
 const RESERVED = [
   "!?",
-  ":", // goto!.. ?
   "{}",
-  "()",
+  "()", // two-way binding like portals? Portals with keys! Functions!.. ?
   "$%",
-  "^v", // pages? tabs?
+  "^v", // pages? tabs? tabs may be linked! OR registers? Stack!... ?
   "&*",
   "_",
   "'`\"",
+  // cut and glue the tape!
 ]
   .join("")
   .match(/./g);
@@ -79,6 +80,7 @@ export class Interpreter {
     this.addCommand(`=`, lock);
     this.addCommand(`~`, release);
     this.addCommand(`0`, numberLog);
+    this.addCommand(`:`, inlineInput);
     this.addFallbackCommand(macro);
   }
 
