@@ -40,11 +40,11 @@ export const inlineInput = ({ tape, memory }) => {
     from++;
   }
 
-  const to = tape.findRight(":");
+  const to = tape.findRight('"');
   const eol = tape.findRight("\n");
 
   if (to === null) {
-    throw new Error(`Where is another ":"?`);
+    throw new Error(`Where is another "\""?`);
   }
 
   if (eol && eol < to) {

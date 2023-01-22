@@ -97,7 +97,7 @@ describe("Motherf", () => {
     expect(interpreter.outputBuffer).toBe("100");
   });
 
-  test(`Inline input (::- and :#:-commands)`, () => {
+  test(`Inline input (""- and "#"-commands)`, () => {
     const interpreter = load("motherf/inline-input.motherf");
 
     interpreter.execute();

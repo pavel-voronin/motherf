@@ -24,16 +24,19 @@ import {
 } from "./commands/index.js";
 
 const RESERVED = [
+  "*", // make portals
+  "^v", // Move to and from stack
+  "%", // toggle cell as stack part
+  "&", // toggle cell overflow to the next cell
+  "()", // functions
+
   "!?",
   "{}",
-  "()", // two-way binding like portals? Portals with keys! Functions!.. ?
-  "$%",
-  "^v", // pages? tabs? tabs may be linked! OR registers? Stack!... ?
-  "&*",
+  "$",
+  "'",
   "_",
-  "'`\"",
-  // cut and glue the tape!
-  // link cells by dumping overflow from 1st to 2nd (int16+ mode)
+  "`",
+  ":",
 ]
   .join("")
   .match(/./g);
@@ -81,7 +84,7 @@ export class Interpreter {
     this.addCommand(`=`, lock);
     this.addCommand(`~`, release);
     this.addCommand(`0`, numberLog);
-    this.addCommand(`:`, inlineInput);
+    this.addCommand(`"`, inlineInput);
     this.addFallbackCommand(macro);
   }
 

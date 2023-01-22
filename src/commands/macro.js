@@ -4,7 +4,7 @@ const newMacro = ({ tape, macros }) => {
   const position = tape.findRight(macroName);
 
   if (position === null) {
-    throw new Error(`Macros should end with it's name`);
+    throw new Error(`Macros should end with it's name: ${macroName}`);
   }
 
   macros[macroName] = tape.position;

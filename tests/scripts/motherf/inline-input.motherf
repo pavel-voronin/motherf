@@ -1,16 +1,16 @@
 ; Inline input
 
-; :Hello, World!: command inputs string between two ":" into memory starting
-;   from current position, then puts pointer after the string
-; :#31337: command puts 31337 (every char -48) into the memory
+; "Hello, World!" command inputs string between two "-s into memory
+;   starting from current position, then puts pointer after the string
+; "#31337" command puts 31337 (every char -48) into the memory
 
 b<[<]>b         ; b-macro: go to the first non-empty cell
 o[.>]o          ; o-macro: output every non-empty char until cell is empty
 d[0>]d          ; o-macro: output every non-empty char as digit
 c[[-]<]>c       ; c-macro: backspace anything 
 
-:Hello, World!: ; input "Hello, World!" string into memory
+"Hello, World!" ; input "Hello, World!" string into memory
 bo
 c
-:#31337:        ; input 31337 as digits
+"#31337"        ; input 31337 as digits
 bd
