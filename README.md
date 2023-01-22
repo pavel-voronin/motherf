@@ -31,8 +31,6 @@ Learning by code is highly recommended.
 - `a`: Output one lowercase character (like `.` but -97)
 - `A`: Output an uppercase character (like `.` but -65)
 - `0`: Output the current memory cell as a number (like `.` but -48)
-- ` `: Skip
-- `\n`: Skip
 - `+`: Increment current memory cell
 - `-`: Decrement the current cell
 - `<`: Move memory pointer to the left
@@ -46,6 +44,7 @@ Learning by code is highly recommended.
 - `@`: Jump some steps right or left using memory cell value as offset
 - `=`: Lock current memory cell maximum value
 - `~`: Unlock current memory cell maximum value
+- Skip every empty symbol: space, new line, tab
 
 ## Examples
 

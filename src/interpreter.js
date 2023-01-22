@@ -70,6 +70,7 @@ export class Interpreter {
     this.addCommand(".", log);
     this.addCommand(" ", skip);
     this.addCommand("\n", skip);
+    this.addCommand("\t", skip);
     this.addCommand("+", inc);
     this.addCommand("-", dec);
     this.addCommand("<", left);
