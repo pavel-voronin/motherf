@@ -7,7 +7,8 @@ import {
   alphaLog,
   AlphaLog,
   numberInput,
-  inlineInput,
+  inlineRawInput,
+  inlineNumberInput,
   inc,
   dec,
   left,
@@ -24,7 +25,7 @@ import {
 } from "./commands/index.js";
 
 const RESERVED = [
-  "*", // make portals
+  "_", // make portals
   "^v", // Move to and from stack
   "%", // toggle cell as stack part
   "&", // toggle cell overflow to the next cell
@@ -33,8 +34,7 @@ const RESERVED = [
   "!?",
   "{}",
   "$",
-  "'",
-  "_",
+  "*",
   "`",
   ":",
 ]
@@ -84,7 +84,8 @@ export class Interpreter {
     this.addCommand(`=`, lock);
     this.addCommand(`~`, release);
     this.addCommand(`0`, numberLog);
-    this.addCommand(`"`, inlineInput);
+    this.addCommand(`"`, inlineRawInput);
+    this.addCommand(`'`, inlineNumberInput);
     this.addFallbackCommand(macro);
   }
 

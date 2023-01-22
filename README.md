@@ -26,7 +26,7 @@ Learning by code is highly recommended.
 - `,`: Enter 1 character
 - `#`: Enter 1 number (like `,` but - 48)
 - `"`: Inline string input
-- `"#`: Inline digits input
+- `'`: Inline digits input
 - `.`: Output current memory cell (ASCII)
 - `a`: Output one lowercase character (like `.` but -97)
 - `A`: Output an uppercase character (like `.` but -65)
