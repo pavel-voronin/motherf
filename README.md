@@ -55,13 +55,10 @@ Tests are covered with comments. Each command has a usage example and descriptio
 
 The language design is still under development. I'm considering doing the following:
 
-- Initialize memory in code by simulating the input:
-  ```
-  :input this string into memory and move pointer:
-  ```
 - Stack, registers
 - Stack-based functions
 - Glue memory tape parts (or portals)
+- eval
 
 ## Contributing
 

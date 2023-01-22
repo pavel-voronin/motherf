@@ -30,12 +30,12 @@ const RESERVED = [
   "^v", // Move to and from stack
   "%", // toggle cell as stack part
   "()", // functions
+  "`", // log everything inside to the output
+  "$", // use cell as command and run it
 
   "!?",
   "{}",
-  "$",
   "*",
-  "`",
   ":",
 ]
   .join("")
