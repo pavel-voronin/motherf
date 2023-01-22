@@ -45,6 +45,10 @@ Learning by code is highly recommended.
 - `=`: Lock current memory cell maximum value
 - `~`: Unlock current memory cell maximum value
 - `&`: Link cell with next one to overflow into
+- `%`: Toggles current cell to be a part of stack
+- `^`: Push (copy) cell value to stack (tail of stack lost)
+- `v`: Pop from stack (tail of stack gets 0)
+- `()`: Launch code inside brackets over isolated stack - linked list of cells
 - Skip every empty symbol: space, new line, tab
 
 ## Examples
