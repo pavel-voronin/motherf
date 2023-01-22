@@ -112,4 +112,12 @@ describe("Motherf", () => {
 
     expect(interpreter.outputBuffer).toBe("00000111\n11111111");
   });
+
+  test(`Square of number using stack (%, ^, v and ()-commands)`, () => {
+    const interpreter = load("motherf/stack.motherf");
+
+    interpreter.execute();
+
+    expect(interpreter.outputBuffer).toBe("49");
+  });
 });

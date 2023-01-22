@@ -1,0 +1,16 @@
+; Square of numbers using stack
+
+; %-command marks (and de-marks) cell as part of stack. Stack is linked list of cells
+; ^-command pushes current cell value to stack, last stack cell loses its value  
+; <-command pops top of the stack to current cell, last stack cell initialized with 0  
+; ()-command pair launches commands between them on linked list of cells - stack.
+;   This memory limited by these cells only.
+
+R%>R                        ; R-macro: make current cell part of stack
+<<<<RRRR                    ; Make 4 cells stack
+++^^                        ; Init 2 and put it in stack twice
+                            ; multiply two numbers into 4th cell
+S([>[->+>+<<]>[-<+>]<<-])SS ; all code in () brackets executes on stack
+vvvv                        ; pop result from stack
+0[-]                        ; outputs 4
++++^^Svvvv0                 ; S(3) = 9

@@ -128,4 +128,30 @@ export class Memory {
   toggleOverflow() {
     this.overflow[this.pointer] = !this.overflow[this.pointer];
   }
+
+  fork(cells) {
+    const branch = new Memory(cells.length);
+
+    for (const i in cells) {
+      const cell = cells[i];
+
+      branch.memory[i] = this.memory[cell];
+      branch.directions[i] = this.directions[cell];
+      branch.overflow[i] = this.overflow[cell];
+      branch.limits[i] = this.limits[cell];
+    }
+
+    return branch;
+  }
+
+  merge(cells, branch) {
+    for (const i in cells) {
+      const cell = cells[i];
+
+      this.memory[cell] = branch.memory[i];
+      this.directions[cell] = branch.directions[i];
+      this.overflow[cell] = branch.overflow[i];
+      this.limits[cell] = branch.limits[i];
+    }
+  }
 }

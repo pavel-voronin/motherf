@@ -23,17 +23,20 @@ import {
   loopStart,
   loopEnd,
   overflowToggle,
+  toggleStackness,
+  unshift,
+  shift,
+  func,
 } from "./commands/index.js";
+import { Stack } from "./stack.js";
 
 const RESERVED = [
   "_", // make portals
-  "^v", // Move to and from stack
-  "%", // toggle cell as stack part
-  "()", // functions
   "`", // log everything inside to the output
   "$", // use cell as command and run it
+  "?", // output to stack or next cell bitmask of modes of current cell
 
-  "!?",
+  "!",
   "{}",
   "*",
   ":",
@@ -60,7 +63,8 @@ export class Interpreter {
     };
 
     this.macros = {};
-    this.stack = [];
+    this.callstack = [];
+    this.stack = new Stack(memory);
     this.commands = {};
 
     this.addCommand(",", input);
@@ -88,6 +92,15 @@ export class Interpreter {
     this.addCommand(`"`, inlineRawInput);
     this.addCommand(`'`, inlineNumberInput);
     this.addCommand(`&`, overflowToggle);
+
+    if (!this.options?.stackMode) {
+      this.addCommand(`%`, toggleStackness);
+      this.addCommand(`^`, unshift);
+      this.addCommand(`v`, shift);
+      this.addCommand(`(`, func);
+      this.addCommand(`)`, skip);
+    }
+
     this.addFallbackCommand(macro);
   }
 

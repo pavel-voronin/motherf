@@ -11,19 +11,17 @@ const newMacro = ({ tape, macros }) => {
   tape.forward(position - tape.position);
 };
 
-export const macro = ({ tape, macros, stack }) => {
+export const macro = ({ tape, macros, callstack }) => {
   const macroName = tape.current();
 
   if (macroName in macros) {
-    let head;
-
-    if (stack.length === 0 || stack.at(-1)[0] != macroName) {
+    if (callstack.length === 0 || callstack.at(-1)[0] != macroName) {
       // this is entrance to the macros
-      stack.push([macroName, tape.position]);
+      callstack.push([macroName, tape.position]);
       tape.position = macros[macroName];
     } else {
       // this is exit from macros
-      const [, position] = stack.pop();
+      const [, position] = callstack.pop();
       tape.position = position;
     }
   } else {
