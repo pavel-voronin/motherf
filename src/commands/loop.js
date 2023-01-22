@@ -1,6 +1,6 @@
 export const loopEnd = ({ memory, tape }) => {
   if (memory.current() !== 0) {
-    const position = tape.findLeft("[");
+    const position = tape.findLeft("[", "]");
 
     if (position === null) {
       throw new Error(`Where is '['?`);

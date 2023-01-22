@@ -33,6 +33,7 @@ const RESERVED = [
   "_",
   "'`\"",
   // cut and glue the tape!
+  // link cells by dumping overflow from 1st to 2nd (int16+ mode)
 ]
   .join("")
   .match(/./g);

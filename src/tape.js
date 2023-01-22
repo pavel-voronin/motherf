@@ -49,10 +49,18 @@ export class Tape {
     return this.tape[this.position];
   }
 
-  findLeft(char) {
+  findLeft(char, pairing = "") {
+    let skip = 0;
+
     for (let i = this.position - 1; i >= 0; i--) {
-      if (this.tape[i] === char) {
-        return i;
+      if (this.tape[i] === pairing) {
+        skip++;
+      } else if (this.tape[i] === char) {
+        if (skip === 0) {
+          return i;
+        } else {
+          skip--;
+        }
       }
     }
 
