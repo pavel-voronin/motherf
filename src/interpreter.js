@@ -27,19 +27,19 @@ import {
   unshift,
   shift,
   func,
+  evalCommand,
 } from "./commands/index.js";
 import { Stack } from "./stack.js";
 
 const RESERVED = [
   "_", // make portals
   "`", // log everything inside to the output
-  "$", // use cell as command and run it
-  "?", // output to stack or next cell bitmask of modes of current cell
+  "!", // output to stack or next cell bitmask of modes of current cell
 
-  "!",
+  "?",
+  ":", // use value of two prev cells as higher type?
   "{}",
-  "*",
-  ":",
+  "*", // to the first cell of connected cells
 ]
   .join("")
   .match(/./g);
@@ -92,6 +92,7 @@ export class Interpreter {
     this.addCommand(`"`, inlineRawInput);
     this.addCommand(`'`, inlineNumberInput);
     this.addCommand(`&`, overflowToggle);
+    this.addCommand(`$`, evalCommand);
 
     if (!this.options?.stackMode) {
       this.addCommand(`%`, toggleStackness);
@@ -120,27 +121,31 @@ export class Interpreter {
     this.commands[symbol] = command;
   }
 
+  runCommand(command) {
+    if (RESERVED.includes(command)) {
+      throw new Error(`Command ${command} is reserved`);
+    }
+
+    if (!(command in this.commands)) {
+      if (FALLBACK in this.commands) {
+        command = FALLBACK;
+      } else {
+        throw new Error(`Unknown command: ${command}`);
+      }
+    }
+
+    this.commands[command](this);
+  }
+
   execute() {
     while (true) {
-      let command = this.tape.forward();
+      const command = this.tape.forward();
 
       if (command === null) {
         return;
       }
 
-      if (RESERVED.includes(command)) {
-        throw new Error(`Command ${command} is reserved`);
-      }
-
-      if (!(command in this.commands)) {
-        if (FALLBACK in this.commands) {
-          command = FALLBACK;
-        } else {
-          throw new Error(`Unknown command: ${command}`);
-        }
-      }
-
-      this.commands[command](this);
+      this.runCommand(command);
     }
   }
 }

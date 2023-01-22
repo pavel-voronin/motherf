@@ -2,8 +2,22 @@ export class Tape {
   constructor(tape, memory) {
     this.tape = tape;
     this.length = this.tape.length;
-    this.position = null;
+    this._position = null;
+    this.currentReplaced = null;
     this.memory = memory;
+  }
+
+  get position() {
+    return this._position;
+  }
+
+  set position(position) {
+    this.currentReplaced = null;
+    this._position = position;
+  }
+
+  replaceCurrent(replacement) {
+    this.currentReplaced = replacement;
   }
 
   glue(tape) {
@@ -32,7 +46,7 @@ export class Tape {
   }
 
   current() {
-    return this.tape[this.position];
+    return this.currentReplaced ?? this.tape[this.position];
   }
 
   back(steps = 1) {

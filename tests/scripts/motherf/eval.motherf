@@ -1,0 +1,5 @@
+; Eval ($-command)
+
+; I can't imagine good case for this command, maybe you can?
+
+"."<$ ; this dot outputs itself :)

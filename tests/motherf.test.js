@@ -120,4 +120,12 @@ describe("Motherf", () => {
 
     expect(interpreter.outputBuffer).toBe("49");
   });
+
+  test(`Eval ($-command)`, () => {
+    const interpreter = load("motherf/eval.motherf");
+
+    interpreter.execute();
+
+    expect(interpreter.outputBuffer).toBe(".");
+  });
 });

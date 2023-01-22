@@ -49,6 +49,7 @@ Learning by code is highly recommended.
 - `^`: Push (copy) cell value to stack (tail of stack lost)
 - `v`: Pop from stack (tail of stack gets 0)
 - `()`: Launch code inside brackets over isolated stack - linked list of cells
+- `$`: Eval
 - Skip every empty symbol: space, new line, tab
 
 ## Examples
