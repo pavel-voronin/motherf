@@ -30,12 +30,14 @@ export const jump = ({ memory }) => {
   memory.jump();
 };
 
-
 export const lock = ({ memory }) => {
   memory.lock();
 };
 
-
 export const release = ({ memory }) => {
   memory.release();
+};
+
+export const overflowToggle = ({ memory }) => {
+  memory.toggleOverflow();
 };

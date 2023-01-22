@@ -22,13 +22,13 @@ import {
   comment,
   loopStart,
   loopEnd,
+  overflowToggle,
 } from "./commands/index.js";
 
 const RESERVED = [
   "_", // make portals
   "^v", // Move to and from stack
   "%", // toggle cell as stack part
-  "&", // toggle cell overflow to the next cell
   "()", // functions
 
   "!?",
@@ -87,6 +87,7 @@ export class Interpreter {
     this.addCommand(`0`, numberLog);
     this.addCommand(`"`, inlineRawInput);
     this.addCommand(`'`, inlineNumberInput);
+    this.addCommand(`&`, overflowToggle);
     this.addFallbackCommand(macro);
   }
 

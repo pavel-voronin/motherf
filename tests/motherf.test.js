@@ -104,4 +104,12 @@ describe("Motherf", () => {
 
     expect(interpreter.outputBuffer).toBe("Hello, World!31337");
   });
+
+  test(`Binary representation (&-command)`, () => {
+    const interpreter = load("motherf/binary-representation.motherf");
+
+    interpreter.execute();
+
+    expect(interpreter.outputBuffer).toBe("00000111\n11111111");
+  });
 });

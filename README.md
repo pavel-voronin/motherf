@@ -44,6 +44,7 @@ Learning by code is highly recommended.
 - `@`: Jump some steps right or left using memory cell value as offset
 - `=`: Lock current memory cell maximum value
 - `~`: Unlock current memory cell maximum value
+- `&`: Link cell with next one to overflow into
 - Skip every empty symbol: space, new line, tab
 
 ## Examples

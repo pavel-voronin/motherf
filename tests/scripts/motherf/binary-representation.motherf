@@ -1,0 +1,22 @@
+; Binary representation
+
+; &-command: links current cell with the next one so if it overflows,
+;   other cell follows with 1 (inc and dec, considering direction)
+
+V+++++V
+XVVX
+LXXXXXL
+CLLC
+
+>                        ; leave the first cell for future input
+2+=+2                    ; 2-macro: make cell of bit type
+2&>2&>2&>2&>2&>2&>2&>2   ; link 8 cells except the last one
+<<<<<<<<                 ; now we are in the cell 0
+'7'<                     ; input 7 as digit
+[>+<-]>                  ; convert 7 to binary representation
+o>>>>>>>0<0<0<0<0<0<0<0o ; o-macro: output 8 bits reversed
+o|<'7'<[>+<-]>|<         ; clear the memory
+X.|X|                    ; new line
+CCLV                     ; input 255
+[>+<-]>                  ; convert 7 to binary representation
+o                        ; convert 255 to binary representation
