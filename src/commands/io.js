@@ -32,13 +32,8 @@ export const numberInput = ({ data, memory }) => {
   memory.set(ord);
 };
 
-export const inlineInput = ({ tape, memory }) => {
+export const inlineRawInput = ({ tape, memory }) => {
   let from = tape.position + 1;
-  const mode = tape.tape[from] === "#" ? "number" : "string";
-
-  if (mode === "number") {
-    from++;
-  }
 
   const to = tape.findRight('"');
   const eol = tape.findRight("\n");
@@ -48,16 +43,33 @@ export const inlineInput = ({ tape, memory }) => {
   }
 
   if (eol && eol < to) {
-    throw new Error(`New lines not supported?`);
+    throw new Error(`New lines not supported`);
   }
 
   for (let i = from; i < to; i++) {
-    if (mode === "number") {
-      memory.set(tape.tape[i].charCodeAt(0) - "0".charCodeAt(0));
-    } else {
-      memory.set(tape.tape[i].charCodeAt(0));
-    }
+    memory.set(tape.tape[i].charCodeAt(0));
+    memory.right();
+  }
 
+  tape.forward(to - tape.position);
+};
+
+export const inlineNumberInput = ({ tape, memory }) => {
+  let from = tape.position + 1;
+
+  const to = tape.findRight("'");
+  const eol = tape.findRight("\n");
+
+  if (to === null) {
+    throw new Error(`Where is another "'"?`);
+  }
+
+  if (eol && eol < to) {
+    throw new Error(`New lines not supported`);
+  }
+
+  for (let i = from; i < to; i++) {
+    memory.set(tape.tape[i].charCodeAt(0) - "0".charCodeAt(0));
     memory.right();
   }
 
