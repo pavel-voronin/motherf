@@ -28,18 +28,18 @@ import {
   shift,
   func,
   evalCommand,
+  directOutput,
 } from "./commands/index.js";
 import { Stack } from "./stack.js";
 
 const RESERVED = [
   "_", // make portals
-  "`", // log everything inside to the output
   "!", // output to stack or next cell bitmask of modes of current cell
 
   "?",
   ":", // use value of two prev cells as higher type?
   "{}",
-  "*", // to the first cell of connected cells
+  "*", // to the first cell of connected cells?
 ]
   .join("")
   .match(/./g);
@@ -93,6 +93,7 @@ export class Interpreter {
     this.addCommand(`'`, inlineNumberInput);
     this.addCommand(`&`, overflowToggle);
     this.addCommand(`$`, evalCommand);
+    this.addCommand("`", directOutput);
 
     if (!this.options?.stackMode) {
       this.addCommand(`%`, toggleStackness);

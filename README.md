@@ -50,6 +50,7 @@ Learning by code is highly recommended.
 - `v`: Pop from stack (tail of stack gets 0)
 - `()`: Launch code inside brackets over isolated stack - linked list of cells
 - `$`: Eval
+- `` ` ``: Direct output from code
 - Skip every empty symbol: space, new line, tab
 
 ## Examples
@@ -60,10 +61,7 @@ Tests are covered with comments. Each command has a usage example and descriptio
 
 The language design is still under development. I'm considering doing the following:
 
-- Stack, registers
-- Stack-based functions
 - Glue memory tape parts (or portals)
-- eval
 
 ## Contributing
 

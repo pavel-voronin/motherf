@@ -1,0 +1,5 @@
+; Direct output
+
+; ``-command forwards everything inside to the output
+
+`Hi there!` ; Prints phrase to the output

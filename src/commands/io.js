@@ -75,3 +75,11 @@ export const inlineNumberInput = ({ tape, memory }) => {
 
   tape.forward(to - tape.position);
 };
+
+export const directOutput = ({ output, tape }) => {
+  const position = tape.findRight("`") ?? tape.length;
+
+  output(tape.tape.slice(tape.position + 1, position));
+
+  tape.position = position;
+};

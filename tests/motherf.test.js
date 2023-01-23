@@ -128,4 +128,12 @@ describe("Motherf", () => {
 
     expect(interpreter.outputBuffer).toBe(".");
   });
+
+  test("Direct output (``-command)", () => {
+    const interpreter = load("motherf/direct-output.motherf");
+
+    interpreter.execute();
+
+    expect(interpreter.outputBuffer).toBe("Hi there!");
+  });
 });
