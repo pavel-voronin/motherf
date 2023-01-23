@@ -51,6 +51,9 @@ Learning by code is highly recommended.
 - `()`: Launch code inside brackets over isolated stack - linked list of cells
 - `$`: Eval
 - `` ` ``: Direct output from code
+- `{`: Open numbered portal
+- `}`: Link portal to new cell (or collapse)
+- `_`: Jump to numbered portal
 - Skip every empty symbol: space, new line, tab
 
 ## Examples
@@ -61,7 +64,12 @@ Tests are covered with comments. Each command has a usage example and descriptio
 
 The language design is still under development. I'm considering doing the following:
 
-- Glue memory tape parts (or portals)
+- Testing
+- Refactoring
+- Architecture
+- Rewrite into Rust
+- Compile to WASM
+- Release as NPM package
 
 ## Contributing
 

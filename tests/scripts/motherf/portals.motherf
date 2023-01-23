@@ -1,0 +1,28 @@
+; Numbered portals ({-, }-, _-commands)
+
+{       ; 0-portal
+>{      ; 0-portal in new place
++{      ; 0- and 1-portals in one cell
+>_      ; jumps to the 0-portal
+>+_     ; jumps to the 1-portal
+>++_    ; stays as there is no 2-portal
+[-]{}   ; re-creates and closes 0-portal
++}      ; creates 1-portal exit
+>[-]+}  ; re-creates 1-portal exit
+<       ; moves to the 1-portal entrance
+[-]+}   ; closes 1-portal
+_       ; stays as there is no 1-portal
+<{>>>-} ; create 0-portal and point it to cell 3
+<       ; goes to cell 0
+>       ; goes to cell 3
+<++@    ; that's how to to to cell 2 in between portal boundaries
+
+; use this approach to hide stack
+
+<<      ; cell 0
+<<      ; let's say we want protected 2-cells stack
+<-{+    ; open 255-portal in the left cell
+>%>%    ; mark 2 cells as stack
+[-]-}+  ; link 255-portal to cell 0
+<       ; we are on the cell before stack
+>       ; back to the cell 0

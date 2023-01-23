@@ -136,4 +136,12 @@ describe("Motherf", () => {
 
     expect(interpreter.outputBuffer).toBe("Hi there!");
   });
+
+  test("Numbered portals ({-, }-, _-commands)", () => {
+    const interpreter = load("motherf/portals.motherf");
+
+    interpreter.execute();
+
+    expect(interpreter.outputBuffer).toBe("");
+  });
 });

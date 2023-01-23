@@ -35,6 +35,33 @@ export class Memory {
     this.overflow = new Array(size).fill(false);
     this.limits = new Uint8Array(size).fill(255);
     this.pointer = 0;
+    this.portals = {};
+  }
+
+  fork(cells) {
+    const branch = new Memory(cells.length);
+
+    for (const i in cells) {
+      const cell = cells[i];
+
+      branch.memory[i] = this.memory[cell];
+      branch.directions[i] = this.directions[cell];
+      branch.overflow[i] = this.overflow[cell];
+      branch.limits[i] = this.limits[cell];
+    }
+
+    return branch;
+  }
+
+  merge(cells, branch) {
+    for (const i in cells) {
+      const cell = cells[i];
+
+      this.memory[cell] = branch.memory[i];
+      this.directions[cell] = branch.directions[i];
+      this.overflow[cell] = branch.overflow[i];
+      this.limits[cell] = branch.limits[i];
+    }
   }
 
   inc() {
@@ -98,18 +125,46 @@ export class Memory {
   }
 
   right(steps = 1) {
-    this.pointer = (this.size + this.pointer + steps) % this.size;
+    if (steps === 1) {
+      // sort before?
+      const portal = Object.entries(this.portals).find(
+        ([_, { entrance }]) => entrance === this.pointer
+      );
+
+      if (portal && portal[1].exit !== null) {
+        this.pointer = portal[1].exit;
+        return;
+      }
+    }
+
+    this.offset(steps);
   }
 
   left(steps = 1) {
-    this.pointer = (this.size + this.pointer - steps) % this.size;
+    if (steps === 1) {
+      // sort before?
+      const portal = Object.entries(this.portals).find(
+        ([_, { exit }]) => exit === this.pointer
+      );
+
+      if (portal) {
+        this.pointer = portal[1].entrance;
+        return;
+      }
+    }
+
+    this.offset(-steps);
+  }
+
+  offset(steps) {
+    this.pointer = (this.size + this.pointer + steps) % this.size;
   }
 
   jump() {
     if (this.directions[this.pointer]) {
-      this.right(this.current());
+      this.offset(this.current());
     } else {
-      this.left(this.current());
+      this.offset(-this.current());
     }
   }
 
@@ -129,29 +184,31 @@ export class Memory {
     this.overflow[this.pointer] = !this.overflow[this.pointer];
   }
 
-  fork(cells) {
-    const branch = new Memory(cells.length);
-
-    for (const i in cells) {
-      const cell = cells[i];
-
-      branch.memory[i] = this.memory[cell];
-      branch.directions[i] = this.directions[cell];
-      branch.overflow[i] = this.overflow[cell];
-      branch.limits[i] = this.limits[cell];
-    }
-
-    return branch;
+  openPortal() {
+    this.portals[this.current()] = { entrance: this.pointer, exit: null };
   }
 
-  merge(cells, branch) {
-    for (const i in cells) {
-      const cell = cells[i];
-
-      this.memory[cell] = branch.memory[i];
-      this.directions[cell] = branch.directions[i];
-      this.overflow[cell] = branch.overflow[i];
-      this.limits[cell] = branch.limits[i];
+  linkPortal() {
+    if (!(this.current() in this.portals)) {
+      throw new Error(`Where is entrance of portal ${this.current()}?`);
     }
+
+    const portal = this.portals[this.current()];
+
+    if (portal.entrance === this.pointer) {
+      delete this.portals[this.current()];
+    }
+
+    portal.exit = this.pointer;
+  }
+
+  portalJump() {
+    if (!(this.current() in this.portals)) {
+      return;
+    }
+
+    const portal = this.portals[this.current()];
+
+    this.pointer = portal.entrance;
   }
 }

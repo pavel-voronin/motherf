@@ -6,3 +6,4 @@ export * from "./comment.js";
 export * from "./loop.js";
 export * from "./stack.js";
 export * from "./eval.js";
+export * from "./portals.js";
