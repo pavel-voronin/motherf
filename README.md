@@ -66,7 +66,7 @@ The code is covered by tests with extensive comments. Each command has a usage e
 
 The language design is now in beta. Everything may change. I'm considering doing the following:
 
-- Testing
+- Testing <- *You can help me here*
 - Refactoring
 - Architecture
 - Rewrite into Rust
