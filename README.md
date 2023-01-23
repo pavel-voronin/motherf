@@ -1,8 +1,10 @@
 # Motherf
 
+> **DEVELOPMENT IN PROCESS! DO NOT USE THIS IN PRODUCTION**
+
 Motherf is a programming language inspired by Brainfuck. It compiles any BF program and extends its syntax with a variety of 1 character commands.
 
-> Have fun!
+Have fun!
 
 ## Usage
 
@@ -58,11 +60,11 @@ Learning by code is highly recommended.
 
 ## Examples
 
-Tests are covered with comments. Each command has a usage example and description.
+The code is covered by tests with extensive comments. Each command has a usage example and description.
 
 ## Roadmap
 
-The language design is still under development. I'm considering doing the following:
+The language design is now in beta. Everything may change. I'm considering doing the following:
 
 - Testing
 - Refactoring
@@ -71,6 +73,12 @@ The language design is still under development. I'm considering doing the follow
 - Compile to WASM
 - Release as NPM package
 
+Please, try this language for 15 minutes and give me your feedback :raised_hands:
+
 ## Contributing
 
-We welcome contributions to the Motherf project. If you are interested in contributing, you are welcome in discussions, issues, personal messages, wherever.
+I welcome contributions to the Motherf project!
+
+If you are interested in contributing, you are welcome in discussions, issues, personal messages, wherever.
+
+Any help will be appreciated.
