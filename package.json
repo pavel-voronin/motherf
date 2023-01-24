@@ -1,6 +1,6 @@
 {
   "name": "@pvoronin/motherf",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Motherf programming language inspired by Brainfuck",
   "bin": "src/index.js",
   "type": "module",

@@ -6,7 +6,7 @@ import { Memory, printer as memoryPrinter } from "./memory.js";
 import { Tape } from "./tape.js";
 import { Interpreter } from "./interpreter.js";
 
-const VERSION = "0.1.0";
+const VERSION = "0.1.1";
 
 program
   .description("Motherf programming language inspired by Brainfuck")
