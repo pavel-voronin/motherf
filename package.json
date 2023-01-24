@@ -1,11 +1,11 @@
 {
-  "name": "motherf",
+  "name": "@pvoronin/motherf",
   "version": "0.1.0",
   "description": "Motherf programming language inspired by Brainfuck",
-  "main": "index.js",
+  "bin": "src/index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon -e js,motherf src/index.js",
+    "dev": "nodemon -e js,motherf src/index.js --",
     "test": "vitest run"
   },
   "keywords": [],
@@ -18,5 +18,6 @@
   },
   "dependencies": {
     "commander": "^10.0.0"
-  }
+  },
+  "repository": "github:pavel-voronin/motherf"
 }

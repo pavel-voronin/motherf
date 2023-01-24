@@ -9,19 +9,12 @@ Have fun!
 ## Usage
 
 ```
-git clone ...
-cd motherf
-npm run dev -- tests/scripts/motherf/jumps.motherf --data 12qwe4
+npx @pvoronin/motherf -h
+echo "#0#0#0" > code.motherf
+npx @pvoronin/motherf code.motherf -i 123
 ```
 
-or just 
-
-```
-...
-npm run test
-```
-
-Learning by code is highly recommended.
+Learning by code (`tests` folder) is highly recommended.
 
 ## Commands
 
@@ -71,7 +64,6 @@ The language design is now in beta. Everything may change. I'm considering doing
 - Architecture
 - Rewrite into Rust
 - Compile to WASM
-- Release as NPM package
 
 Please, try this language for 15 minutes and give me your feedback :raised_hands:
 
